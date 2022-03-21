@@ -8,6 +8,14 @@ app = Flask(__name__)
 app.secret_key="abc"# #
 
 
+
+
+
+
+
+
+
+
 @app.route('/',methods=['get','post'])
 def hello_world():
     if request.method=="POST":
@@ -31,6 +39,16 @@ def hello_world():
     return render_template('index.html')
 
 
+
+
+
+
+
+
+
+
+
+
 @app.route('/dealer_add', methods=['get','post'])
 def dealer_add():
     if request.method=="POST":
@@ -46,6 +64,15 @@ def dealer_add():
         db.insert("INSERT INTO dealer(login_id,dealer_name,d_place,d_post,d_phone,d_pin,d_email) VALUES('"+str(ss)+"','"+name+"','"+place+"','"+post+"','"+phone+"','"+pin+"','"+email+"')")
         return '''<script> alert ('Successfully Registered');window.location="/dealer_add"</script>'''
     return render_template('admin/dealer_add_form.html')
+
+
+
+
+
+
+
+
+
 
 
 @app.route('/dealer_update/<b>',methods=['get','post'])
@@ -65,17 +92,41 @@ def dealer_update(b):
         ss=db.selectOne("select * from dealer where login_id='"+b+"'" )
         return render_template('admin/dealer_update.html',data=ss)
 
+
+
+
+
+
+
+
+
+
+
 @app.route('/dealer_delete/<b>')
 def dealer_delete(b):
     db=Db()
     db.delete("delete from dealer where login_id='"+b+"'")
     return redirect('/dealer_view')
 
+
+
+
+
+
+
+
+
 @app.route('/dealer_view')
 def dealer_view_form():
     db=Db()
     ss=db.select("select * from dealer" )
     return render_template('admin/dealer_view_form.html',data=ss)
+
+
+
+
+
+
 
 
 @app.route('/feedback')
@@ -85,6 +136,11 @@ def feedback():
     return render_template('admin/feedback.html',data=ss)
 
 
+
+
+
+
+
 @app.route('/viewregistereduser')
 def viewregistereduser():
     db=Db()
@@ -92,9 +148,25 @@ def viewregistereduser():
     return render_template('admin/viewregistereduser.html',data=ss)
 
 
+
+
+
+
+
+
 @app.route('/adminhome')
 def adminhome():
     return render_template('admin/adminview.html')
+
+
+
+
+
+
+
+
+
+
 
 #****************************************************second module "dealer"****************************************************#
 
@@ -185,6 +257,14 @@ def complaint_view():
     db=Db()
     se=db.select("select * from user,complaint where user.login_id=complaint.user_id")
     return render_template('dealer/complaint.html',data=se)
+
+
+
+
+@app.route('/replay')
+def replay():
+    db=Db()
+    return render_template('dealer/replay.html')
 
 
 
