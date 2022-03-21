@@ -26,8 +26,8 @@
       <td>{{ i['d_pin'] }}</td>
       <td>{{ i['d_phone'] }}</td>
       <td>{{ i['d_email'] }}&nbsp;</td>
-      <td><p><a href="#">Update</a></p>
-      <p><a href="#">Delete</a></p></td>
+      <td><p><a href="/dealer_update/{{ i['login_id'] }}">Update</a></p>
+      <p><a href="/dealer_delete/{{ i['login_id'] }}">Delete</a></p></td>
     </tr>
       {% endfor %}
     
