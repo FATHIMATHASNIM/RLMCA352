@@ -1,3 +1,5 @@
+{% extends 'dealer/dashboard_dealer.html' %}
+{%  block body %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,7 +24,7 @@
       <td>{{ i['complaint'] }}</td>
       <td>{{ i['comp_date'] }}&nbsp;</td>
       <td></td>
-      <td><a href="#">Replay</a></td>
+      <td><a href="replay/{{ i['comp_id'] }}">Replay</a></td>
     </tr>
       {% endfor %}
     <tr>
@@ -31,3 +33,4 @@
 </form>
 </body>
 </html>
+{% endblock %}
