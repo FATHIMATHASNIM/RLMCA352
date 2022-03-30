@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="" method="get">
+  <table width="752" height="199" border="1">
+    <tr>
+      <th width="123" scope="col">#</th>
+        <th width="167" scope="col">User Name</th>
+      <th width="167" scope="col">product Name</th>
+      <th width="173" scope="col">quantity</th>
+      <th width="133" scope="col">status</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ loop.index}}</td>
+        <td>{{ i['user_id'] }}</td>
+        <td>{{ i['prod_id'] }}</td>
+        <td>&nbsp;{{ i['quantity'] }}</td>
+        <td>&nbsp;{{ i['c_status'] }}</td>
+    </tr>
+      {% endfor %}
+   
+  </table>
+</form>
+</body>
+</html>
