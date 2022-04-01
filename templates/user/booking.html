@@ -15,13 +15,15 @@
       <th width="165" scope="col">amount</th>
       <th width="298" scope="col">status</th>
     </tr>
+      {% for i in data %}
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>{{ loop.index }}</td>
+      <td>{{ i['prod_name'] }}</td>
+      <td>{{ i['quantity'] }}</td>
+      <td>{{ i['amount'] }}</td>
+      <td>{{ i['c_status'] }}</td>
     </tr>
+      {% endfor %}
   
   </table>
 </form>

@@ -292,7 +292,7 @@ def u_register():
         sd=db.insert(" insert into user (login_id,user_name,dob,place,post,phone,email,pin) values ('"+str(sb)+"','"+name+"','"+dob+"','"+place+"','"+post+"','"+phone+"','"+email+"','"+pin+"')")
         return '''<script>alert ('Registered Successfully');window.location="/"</script>'''
     else:
-        return render_template('user/user_reg.html')
+        return render_template('user/user_regform.html')
 
 
 @app.route('/view_product')
@@ -322,7 +322,7 @@ def book(d):
             if res >= quantity:
                 ss=db.insert ("insert into cart (prod_id,user_id,quantity,c_status)VALUES ('"+d+"','"+str(session['lid'])+"','"+quantity+"','add to cart')")
                 se=db.insert("insert into bookings (cart_id,amount, b_status) VALUE ('"+str(ss)+"',0,'pending')")
-                return '''<script>alert("product add to cart");window.location="/userhome"</script>'''
+                return '''<script>alert("product add to cart");window.location="/view_cart"</script>'''
             else:
                 return '''<script>alert("quantity is high!");wnidow.location="/view_product"</script>'''
 
@@ -342,12 +342,42 @@ def view_cart():
 
 @app.route('/bookings')
 def bookings():
-    return render_template('user/booking.html')
+    db=Db()
+    bc=db.select("select * from bookings,cart,product where bookings.cart_id=cart.cart_id and bookings.b_status='booked' and cart.c_status='booked' and bookings.amount!=0 and cart.prod_id=product.product_id")
+    return render_template('user/booking.html',data=bc)
 
 
 @app.route('/card_details')
 def card_details():
+    db=Db()
+    sa=db.select("select * from credit_card where user_id='"+str(session['lid'])+"' ")
+    return render_template('user/card.html',data=sa)
+
+
+
+@app.route('/card_update/<c_id>',methods=['get','post'])
+def card_update(c_id):
+    if request.method=="POST":
+        cardnumber=request.form["textfield"]
+        cvv=request.form["textfield2"]
+        expirydate=request.form["textfield3"]
+        db=Db()
+        db.update("update credit_card set card_number='"+cardnumber+"',cvv='"+cvv+"',expiry_date='"+expirydate+"'")
+        return '''<script>alert("update successfully!");window.location="/card_details"</script>'''
+    else:
+        db=Db()
+        cd=db.selectOne("select * from credit_card where card_id='"+c_id+"'")
+        return render_template('user/card_update.html',data=cd)
+
+
+
+
+@app.route('/card_delete/<c_id>')
+def card_delete(c_id):
+    db = Db()
+    db.delete("delete from credit_card where card_id='" + c_id + "'")
     return render_template('user/card.html')
+
 
 
 @app.route('/transaction')
@@ -375,6 +405,12 @@ def user_complaint():
         ss = db.insert("insert into complaint (user_id,complaint,comp_date) value ('"+str(session['lid'])+"','" + complaint + "',curdate())")
         return '''<script> alert("complaint send successfully");window.location="/userhome"</script>'''
     return render_template('user/user_complaint.html')
+
+
+
+@app.route('/make_payements/<cart_id>',methods=['get','post'])
+def make_payement(cart_id):
+    return render_template('user/user_payement.html')
 
 
 if __name__ == '__main__':

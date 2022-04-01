@@ -1,3 +1,6 @@
+{% extends 'user/dashboard_user.html' %}
+{%  block body %}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,25 +9,29 @@
 </head>
 
 <body>
-<form action="" method="get">
+<form action="" method="post">
   <table width="899" height="404" border="1">
     <tr>
       <th width="70" scope="col">#</th>
       <th width="206" scope="col">card number</th>
       <th width="167" scope="col">cvv</th>
       <th width="211" scope="col">expiry date</th>
-      <th width="211" scope="col">&nbsp;</th>
+      <th width="211" scope="col"></th>
     </tr>
+      {% for i in data %}
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td><p><a href="#">Update</a></p>
-      <p><a href="#">Delete</a></p></td>
+    <td>{{ loop.index }}</td>
+    <td>{{ i['card_number'] }}</td>
+    <td>{{ i['cvv'] }}</td>
+    <td>{{ i['expiry_date'] }}</td>
+    <td><p><a href="/card_update/{{ i['card_id'] }}">Update</a></p>
+        <a href="/card_delete/{{ i['card_id'] }}">Delete</a>
+      </td>
     </tr>
+      {% endfor %}
     
   </table>
 </form>
 </body>
 </html>
+{% endblock %}
