@@ -288,9 +288,14 @@ def u_register():
         email = request.form["textfield5"]
         passw = request.form["textfield8"]
         db=Db()
-        sb=db.insert("insert into login (username,password,usertype) values ('"+email+"','"+passw+"','user')")
-        sd=db.insert(" insert into user (login_id,user_name,dob,place,post,phone,email,pin) values ('"+str(sb)+"','"+name+"','"+dob+"','"+place+"','"+post+"','"+phone+"','"+email+"','"+pin+"')")
-        return '''<script>alert ('Registered Successfully');window.location="/"</script>'''
+        us=db.selectOne("select * from login where username='"+email+"'")
+        if us is not None:
+            return '''<script>alert('user aready registered');window.location="/user_register"</script>'''
+
+        else:
+            sb=db.insert("insert into login (username,password,usertype) values ('"+email+"','"+passw+"','user')")
+            sd=db.insert(" insert into user (login_id,user_name,dob,place,post,phone,email,pin) values ('"+str(sb)+"','"+name+"','"+dob+"','"+place+"','"+post+"','"+phone+"','"+email+"','"+pin+"')")
+            return '''<script>alert ('Registered Successfully');window.location="/"</script>'''
     else:
         return render_template('user/user_regform.html')
 
@@ -336,7 +341,7 @@ def book(d):
 @app.route('/view_cart')
 def view_cart():
     db=Db()
-    sf = db.select("select * from product,user, cart where cart.user_id=user.login_id and product.product_id=cart.prod_id and product.prod_quantity=cart.quantity")
+    sf = db.select("select * from product,user, cart where cart.user_id=user.login_id and product.product_id=cart.prod_id and product.prod_quantity=cart.quantity and cart.user_id='"+str(session['lid'])+"'")
     return render_template('user/cart.html',data=sf)
 
 
@@ -411,6 +416,23 @@ def user_complaint():
 @app.route('/make_payements/<cart_id>',methods=['get','post'])
 def make_payement(cart_id):
     return render_template('user/user_payement.html')
+
+
+
+
+@app.route('/book_product',methods=['get','post'])
+def book_product():
+    if request.method=="POST":
+        cardno=request.form["textfield"]
+        expiry=request.form["textfield3"]
+        cvv=request.form["textfield2"]
+        db=Db()
+        cv=db.selectOne("select * from credit_card where user_id='"+str(session['lid'])+"' and card_number='"+cardno+"' and cvv='"+cvv+"' and expiry_date='"+expiry+"'")
+        if cv is not None:
+            return render_template('user/user_payement.html')
+        else:
+
+    return render_template()
 
 
 if __name__ == '__main__':

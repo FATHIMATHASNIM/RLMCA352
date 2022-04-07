@@ -39,7 +39,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Full Name</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <input class="input--style-4" type="text" name="textfield" required>
                                 </div>
                             </div>
                             </div>
@@ -47,14 +47,20 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Place</label>
-                                    <input class="input--style-4" type="text" name="place">
+                                    <input class="input--style-4" type="text" name="textarea6" required>
                                 </div>
                             </div>
 
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Post</label>
-                                    <input class="input--style-4" type="text" name="post">
+                                    <input class="input--style-4" type="text" name="textarea7" required>
+                                </div>
+                            </div>
+                        <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Pin</label>
+                                    <input class="input--style-4" type="text" name="textfield4" required>
                                 </div>
                             </div>
 
@@ -70,7 +76,7 @@
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="date" name="birthday">
+                                        <input class="input--style-4 js-datepicker" type="date" name="textfield2" required>
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
@@ -97,19 +103,19 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" type="email" name="textfield5" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" type="text" name="textfield3" required>
                                 </div>
                             </div>
                              <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password">
+                                    <input class="input--style-4" type="password" name="textfield8" required>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +133,8 @@
 {#                            </div>#}
 {#                        </div>#}
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                            <button class="btn btn--radius-2 btn--blue" input type="submit" name="button" id="button" value="Register" />Register</button>
+{#                            <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>#}
                         </div>
                     </form>
                 </div>
