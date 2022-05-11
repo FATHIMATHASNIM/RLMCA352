@@ -10,13 +10,13 @@
 
 <body>
 <form action="" method="get">
-  <table width="752" height="199" border="1">
+  <table class="table table-bordered">
     <tr>
-      <th width="123" scope="col">#</th>
+      <th scope="col">#</th>
 
-      <th width="167" scope="col">product Name</th>
-      <th width="173" scope="col">quantity</th>
-      <th width="133" scope="col"></th>
+      <th  scope="col">product Name</th>
+      <th  scope="col">quantity</th>
+      <th  scope="col"></th>
     </tr>
       {% for i in data %}
     <tr>
@@ -24,7 +24,7 @@
 
         <td>{{ i['prod_name'] }}</td>
         <td>&nbsp;{{ i['quantity'] }}</td>
-        <td>&nbsp;<a href="/make_payements/{{ i['cart_id'] }}">Make Payement</a> </td>
+        <td>&nbsp;<a href="/make_payements/{{ i['cart_id'] }}" class="btn btn-primary">Make Payement</a> </td>
     </tr>
       {% endfor %}
    

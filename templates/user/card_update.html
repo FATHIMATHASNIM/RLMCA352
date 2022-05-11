@@ -10,24 +10,24 @@
 
 <body>
 <form action="/card_update/{{ data['card_id'] }}" method="post" enctype="multipart/form-data">
-  <table width="732" height="592" border="1">
+  <table class="table table-bordered">
     <tr>
       <td  width="222">CARD NUMBER</td>
       <td width="494"><label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield" value="{{ data['card_number']  }}" /></td>
+      <input type="text" name="textfield" id="textfield" value="{{ data['card_number']  }}"  class="form-control" required /></td>
     </tr>
     <tr>
       <td >CVV</td>
       <td><label for="textfield2"></label>
-      <input type="text" name="textfield2" id="textfield2" value="{{ data['cvv']  }}"/></td>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data['cvv']  }}"  class="form-control" required/></td>
     </tr>
     <tr>
       <td >Expiry Date</td>
       <td><label for="textfield3"></label>
-      <input type="date" name="textfield3" id="textfield3" value="{{ data['expiry_date']  }}"/></td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data['expiry_date']  }}" placeholder="MM/YY"  class="form-control" required /></td>
     </tr>
     <tr>
-      <td colspan="2"><input type="submit" name="button" id="button" value="Update" /></td>
+      <td colspan="2"><input type="submit" name="button" id="button" value="Update" class="btn btn-primary" /></td>
     </tr>
   </table>
 </form>

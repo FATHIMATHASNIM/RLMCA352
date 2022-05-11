@@ -9,13 +9,14 @@
 
 <body>
 <form action="/book/{{ data['product_id'] }}" method="post">
-  <table width="200" border="1">
+  <table class="table table-bordered">
     <tr>
+        <td>Add your required quantity</td>
       <td><label for="textarea"></label>
-      <input type="text" name="textarea" id="textarea" ></input></td>
+      <input type="text" name="textarea" id="textarea" class="form-control" required></input></td>
     </tr>
     <tr>
-      <td><input type="submit" name="button" id="button" value="Submit" /></td>
+      <td colspan="2" align="center"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary" /></td>
     </tr>
   </table>
 </form>

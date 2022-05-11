@@ -9,39 +9,39 @@
 
 <body>
 <form action="/dealer_update/{{ data['login_id'] }}" method="post">
-  <table width="676" height="441" border="1">
+  <table class="table table-bordered">
     <tr>
       <th width="163" scope="row">Name</th>
       <td width="407"><label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield" value="{{ data['dealer_name'] }}" /></td>
+      <input type="text" name="textfield" id="textfield" value="{{ data['dealer_name'] }}" class="form-control"/></td>
     </tr>
     <tr>
       <th scope="row">Place</th>
       <td><label for="textfield2"></label>
-      <input type="text" name="textfield2" id="textfield2" value="{{ data['d_place'] }}"/></td>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data['d_place'] }}"  class="form-control"/></td>
     </tr>
     <tr>
       <th scope="row">Post</th>
       <td><label for="textfield3"></label>
-      <input type="text" name="textfield3" id="textfield3" value="{{ data['d_post'] }}"/></td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data['d_post'] }}"  class="form-control"/></td>
     </tr>
     <tr>
       <th scope="row">Pin</th>
       <td><label for="textfield4"></label>
-      <input type="number" name="textfield4" id="textfield4" value="{{ data['d_pin'] }}"/></td>
+      <input type="number" name="textfield4" id="textfield4" value="{{ data['d_pin'] }}"  class="form-control"/></td>
     </tr>
     <tr>
       <th scope="row">Phone</th>
       <td><label for="textfield5"></label>
-      <input type="number" name="textfield5" id="textfield5" value="{{ data['d_phone'] }}"/></td>
+      <input type="number" name="textfield5" id="textfield5" value="{{ data['d_phone'] }}"  class="form-control"/></td>
     </tr>
     <tr>
       <th scope="row">E-Mail</th>
       <td><label for="textfield6"></label>
-      <input type="email" name="textfield6" id="textfield6" value="{{ data['d_email'] }}" readonly/></td>
+      <input type="email" name="textfield6" id="textfield6" value="{{ data['d_email'] }}"  class="form-control" readonly/></td>
     </tr>
     <tr>
-      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Update" /></th>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Update" class="btn btn-primary" /></th>
     </tr>
   </table>
 </form>

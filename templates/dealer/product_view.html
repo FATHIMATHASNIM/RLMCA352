@@ -9,16 +9,16 @@
 
 <body>
 <form action="" method="get">
-  <table width="631" height="241" border="1">
+  <table class="table table-bordered">
     <tr>
-      <th width="65" scope="col">#</th>
-      <th width="130" scope="col">Product Name</th>
-      <th width="134" scope="col">Product quantity</th>
-      <th width="117" scope="col">Price</th>
-        <th width="151" scope="col">Image</th>
-      <th width="151" scope="col">Category</th>
-      <th width="151" scope="col">Freshness</th>
-      <th width="151" scope="col">Details</th>
+      <th  scope="col">#</th>
+      <th  scope="col">Product Name</th>
+      <th  scope="col">Product quantity</th>
+      <th  scope="col">Price</th>
+        <th  scope="col">Image</th>
+      <th  scope="col">Category</th>
+      <th  scope="col">Freshness</th>
+      <th  scope="col">Details</th>
     </tr>
       {% for i in data %}
     <tr>
@@ -32,8 +32,9 @@
         <td>&nbsp;{{ i['category'] }}</td>
         <td>&nbsp;{{ i['fresh'] }}</td>
         <td>&nbsp;{{ i['details'] }}</td>
-      <td><p><a href="/product_update/{{ i['product_id'] }}">update</a></p>
-      <p><a href="product_delete/{{ i['product_id'] }}">Delete</a></p></td>
+      <td><p><a href="/product_update/{{ i['product_id'] }}" class="btn btn-primary">update</a></p>
+      <p><a href="product_delete/{{ i['product_id'] }}" class="btn btn-danger">Delete</a></p></td>
+    <td><a href="/addstock/{{ i['product_id'] }}" class="btn btn-success">Add Stock</a> </td>
     </tr>
     {% endfor %}
    

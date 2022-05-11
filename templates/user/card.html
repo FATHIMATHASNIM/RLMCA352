@@ -10,13 +10,14 @@
 
 <body>
 <form action="" method="post">
-  <table width="899" height="404" border="1">
+  <table class="table table-bordered">
     <tr>
-      <th width="70" scope="col">#</th>
-      <th width="206" scope="col">card number</th>
-      <th width="167" scope="col">cvv</th>
-      <th width="211" scope="col">expiry date</th>
-      <th width="211" scope="col"></th>
+      <th  scope="col">#</th>
+      <th  scope="col">card number</th>
+      <th  scope="col">cvv</th>
+      <th  scope="col">expiry date</th>
+        <th  scope="col">Balance</th>
+      <th  scope="col"></th>
     </tr>
       {% for i in data %}
     <tr>
@@ -24,8 +25,9 @@
     <td>{{ i['card_number'] }}</td>
     <td>{{ i['cvv'] }}</td>
     <td>{{ i['expiry_date'] }}</td>
-    <td><p><a href="/card_update/{{ i['card_id'] }}">Update</a></p>
-        <a href="/card_delete/{{ i['card_id'] }}">Delete</a>
+          <td>{{ i['balance'] }}</td>
+    <td><p><a href="/card_update/{{ i['card_id'] }}" class="btn btn-primary">Update</a></p>
+        <p><a href="/card_delete/{{ i['card_id'] }}" class="btn btn-danger">Delete</a></p>
       </td>
     </tr>
       {% endfor %}

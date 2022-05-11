@@ -8,27 +8,22 @@
 </head>
 
 <body><form action="" method="get">
-  <table width="581" height="157" border="1">
+  <table class="table table-bordered">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Product name</th>
       <th scope="col">Stock</th>
     </tr>
+      {% for i in pdct %}
     <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>{{ loop.index }}</td>
+      <td>&nbsp;{{ i['prod_name'] }}<br>
+          <img src="{{ i['image'] }}" height="100px" width="100px">
+      </td>
+      <td>&nbsp;{{ i['stock_quantity'] }}</td>
+    <td><a href="/update_stock/{{ i['stock_id'] }}" class="btn btn-primary">Update</a> </td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
+{% endfor %}
   </table>
 </form>
 </body>

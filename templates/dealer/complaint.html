@@ -9,13 +9,13 @@
 
 <body>
 <form action="" method="get">
-  <table width="800" height="307" border="1">
+  <table class="table table-bordered">
     <tr>
-      <th width="68" scope="col">#</th>
-      <th width="119" scope="col" required>user Name</th>
-      <th width="123" scope="col" required>complaint</th>
-      <th width="155" scope="col" required>complaint date</th>
-      <th width="171" scope="col">&nbsp;</th>
+      <th scope="col">#</th>
+      <th  scope="col" required>user Name</th>
+      <th  scope="col" required>complaint</th>
+      <th  scope="col" required>complaint date</th>
+      <th  scope="col">Reply</th>
     </tr>
       {% for i in data %}
     <tr>
@@ -23,8 +23,15 @@
       <td>{{ i['user_name'] }}</td>
       <td>{{ i['complaint'] }}</td>
       <td>{{ i['comp_date'] }}&nbsp;</td>
-      <td></td>
-      <td><a href="replay/{{ i['comp_id'] }}">Replay</a></td>
+
+      <td>
+          {% if i['replay']=='pending' %}
+          <a href="/replay/{{ i['comp_id'] }}" class="btn btn-primary">Replay</a>
+          {% else %}
+          {{ i['replay'] }}<br>
+          {{ i['rep_date'] }}
+          {% endif %}
+      </td>
     </tr>
       {% endfor %}
     <tr>

@@ -9,30 +9,31 @@
 </head>
 
 <body>
-<form action="" method="get">
-  <table width="458" height="303" border="1">
+<form action="/book_product" method="post">
+  <table class="table table-bordered">
     <tr>
       <td width="185">card Number</td>
       <td width="257"><label for="textfield"></label>
-      <input type="number" name="textfield" id="textfield" /></td>
+      <input type="number" name="textfield" id="textfield" class="form-control" required/></td>
+    </tr>
+      <tr>
+      <td>CVV</td>
+      <td><label for="textfield3"></label>
+      <input type="number" name="textfield3" id="textfield3"  class="form-control" required/></td>
     </tr>
     <tr>
       <td>Expiry</td>
       <td><label for="textfield2"></label>
-      <input type="text" name="textfield2" id="textfield2" /></td>
+      <input type="text" name="textfield2" id="textfield2" placeholder="MM/YY" class="form-control" required/></td>
     </tr>
-    <tr>
-      <td>CVV</td>
-      <td><label for="textfield3"></label>
-      <input type="text" name="textfield3" id="textfield3" /></td>
-    </tr>
+
     <tr>
       <td>Card Holder's Name</td>
       <td><label for="textfield4"></label>
-      <input type="text" name="textfield4" id="textfield4" /></td>
+      <input type="text" name="textfield4" id="textfield4"  class="form-control" required/></td>
     </tr>
       <tr>
-      <td height="69" colspan="2"><input type="submit" name="button" id="button" value="Submit" /></td>
+      <td height="69" colspan="2" align="center"><input type="submit" name="button" id="button" value="Submit" class="btn btn-primary"/></td>
     </tr>
   </table>
 </form>
